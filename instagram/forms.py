@@ -3,7 +3,7 @@ from django import forms
 from django.forms import ModelForm
 
 
-class NewPostForm(forms.ModelForm):
+class NewPostForm(forms.Form):
     class Meta:
         model = Post
         exclude = ['editor', 'pub_date']
