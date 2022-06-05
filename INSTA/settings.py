@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bootstrap4',
     'registration',
+    'tinymce',
     'instagram.apps.InstagramConfig',
     'django.contrib.admin',
     'django.contrib.auth',

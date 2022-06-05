@@ -1,6 +1,8 @@
 from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 # Create your models here.
 class Editor(models.Model):
     first_name = models.CharField(max_length = 30)
@@ -23,7 +25,8 @@ class tags(models.Model):
         return self.name
 class Post(models.Model):
     location = models.CharField(max_length= 100)
-    post = models.ImageField(upload_to = 'media/posts', blank = False)
+    post = HTMLField(default="Some String")
+    post_image = models.ImageField(upload_to = 'media/posts', blank = False, default='')
     tags = models.ManyToManyField(tags)
     editor = models.ForeignKey(User,on_delete=models.CASCADE)
 
