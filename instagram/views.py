@@ -6,3 +6,9 @@ from django.contrib.auth.decorators import login_required
 def welcome (request):
 
     return render(request, 'landing.html')
+
+def register(request):
+    return render(request, 'registration_form.html')
+
+def login (request):
+    return render(request, 'login.html')
