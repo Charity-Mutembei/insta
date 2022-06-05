@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 urlpatterns=[
-    url('^home', views.welcome, name = 'welcome'),
+    url('^', views.welcome, name = 'welcome'),
 
 ]
 
