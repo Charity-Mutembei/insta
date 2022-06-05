@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewPostForm
 from django.shortcuts import render, redirect
 # Create your views here.
-
+@login_required(login_url='/login/')
 def welcome (request):
 
     return render(request, 'landing.html')
