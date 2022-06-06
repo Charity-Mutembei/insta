@@ -3,10 +3,12 @@ from django import forms
 from django.forms import ModelForm
 
 
-class NewPostForm(forms.Form):
+class NewPostForm(forms.ModelForm):
+    
+
     class Meta:
         model = Post
-        exclude = ['editor', 'pub_date']
+        exclude = ['editor', 'likes']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
