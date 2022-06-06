@@ -8,7 +8,7 @@ class NewPostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        exclude = ['editor', 'likes']
+        exclude = ['editor', 'likes', 'comment']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
