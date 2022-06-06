@@ -4,21 +4,27 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 # Create your models here.
+
 class tags(models.Model):
     name = models.CharField(max_length = 30)
 
     def __str__ (self):
         return self.name
-class Post(models.Model):
 
+
+class Post(models.Model):
     post_text = models.TextField(max_length= 100, blank = True)
-    post_image = models.ImageField(upload_to = 'media/posts', blank = False, default='')
+    post_image = models.ImageField(upload_to = 'posts', blank = False, default='')
     tags = models.ManyToManyField(tags)
 
+    def __str__(self):
+        return self.post_text
 
 
     def save_post(self):
         self.save()
+
+
 class Follow(models.Model):
     follower = models.ForeignKey(User, on_delete= models.CASCADE, related_name='follower')
     following = models.ForeignKey(User, on_delete= models.CASCADE, related_name='following')

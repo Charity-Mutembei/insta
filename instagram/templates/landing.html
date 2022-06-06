@@ -1,5 +1,4 @@
 {%extends 'base.html'%}
-{% load static%}
 {% block content %}
 
 
@@ -13,35 +12,49 @@
                 <div class="col">
                     <div class="profiles" style="border: 0.2px solid grey; background-color: white; border-radius: 5px; height: 3.5cm; padding-top: 20px; padding-left: 20px;">
                         <div class="row" >
+                          {% for post in posts %}
+
                             <div class="col">
-                                <img src="{% static 'pic.jpeg' %}" alt=""  style="width: 2cm; height: 2cm; border-radius: 6cm; ">
-                                <p>Charity Mutembei</p>            
+                                <img src="{{post.post_image.url}}" alt="charity" style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; ">
+                                <p>{{post.post_text}}</p>
                             </div>
+
+                            {% endfor %}
                         </div>
                     </div>
-            
-                    <!-- posts --> 
+
+                    <!-- posts -->
+
                     <div class="stories" style="border: 0.2px solid grey; background-color: white; border-radius: 5px; height: 25.5cm; margin-top: 1cm; padding: 2px;">
                        <div class="row">
+
                            <div class="col">
+                                 {% for post in posts %}
+
                             <div class="card" style="width: 31.65rem;">
                                 <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p class="card-text">{{post_item.user.username}}</p>
                                 </div>
-                                <img class="card-img-top" src="{% static 'pic.jpeg' %}" alt="Card image cap">
+                                <img class="card-img-top" src="{{ post.post_image.url }}" alt="Card image cap">
                                 <div class="card-body">
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                                  <p class="card-text">{{tags}}</p>
+
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">{{post_item.post_text}}</li>
                                     <li class="list-group-item">Dapibus ac facilisis in</li>
                                   </ul>
                               </div>
+                                {% endfor %}
+
                            </div>
+
                        </div>
-            
+
                     </div>
             </div>
+
             <div class="left-side" style="margin-left: 100%; margin-top: -205%;">
                 <div class="row">
                     <div class="col">
@@ -49,12 +62,12 @@
                             <div class="profile-switch">
                                 <div class="row">
                                     <div class="col">
-                                        <img src="{% static 'pic.jpeg' %}" alt=""
+                                        <img src="/static/pic.jpeg" alt=""
                                             style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; ">
                                     </div>
                                     <div class="col" style="margin-left: 250%; margin-top: -150%;">
                                         <p>mutembei.charity</p>
-            
+
                                     </div>
                                 </div>
                             </div>
@@ -73,12 +86,12 @@
                             <div class="profile-switch">
                                 <div class="row">
                                     <div class="col">
-                                        <img src="{% static 'pic.jpeg' %}" alt=""
+                                        <img src="/static/pic.jpeg" alt=""
                                             style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; ">
                                     </div>
                                     <div class="col" style="margin-left: 250%; margin-top: -150%;">
                                         <p>mutembei.charity</p>
-            
+
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +99,7 @@
                     </div>
                     <div class="col" style="margin-left: 990%; margin-top: -150%;">
                         <a href="#">Follow</a>
-                    </div> 
+                    </div>
                 </div>
             </div>
             </div>
