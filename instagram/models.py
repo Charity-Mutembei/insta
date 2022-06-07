@@ -11,6 +11,10 @@ class tags(models.Model):
     def __str__ (self):
         return self.name
 
+class Profile(models.Model):
+    profilePhoto = models.ImageField()
+    Bio = models.TextField(max_length=500, blank=True)
+
 
 class Post(models.Model):
     post_text = models.TextField(max_length= 100, blank = True)

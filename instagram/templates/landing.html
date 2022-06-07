@@ -20,11 +20,11 @@
 
                             {% endfor %}
                         </div>
-                        <div class="slide-control" style="transform: translateY(-50%); display: flex; color: white;" >
+                        <div class="slide-control" style="transform: translateY(-50%); display: flex; color: white; margin-top: 5%;" >
                           <button id="prev-btn" style="cursor: pointer; background: transparent; outline: none;" >
                             <i class="fa-solid fa-circle-chevron-left"></i>
                           </button>
-                          <button id="next-btn" style="cursor: pointer; background: transparent; outline: none; " >
+                          <button id="next-btn" style="cursor: pointer; background: transparent; outline: none; margin-left: 83%; " >
                             <i class="fa-solid fa-circle-chevron-right"></i>
                           </button>
                         </div>
@@ -61,11 +61,16 @@
                                         <svg aria-label="Share Post" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
                                       </div>
                                     </div>
+                                      <div class="col">
+                                        <div class="save">
+                                        <svg aria-label="Save" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+                                      </div>
+                                      </div>
                                   </div>
 
                                   {%for tag in tags %}
 
-                                  <p class="card-text">{{tag.}}</p>
+                                  <p class="card-text">{{tag.name}}</p>
 
                                   {% endfor %}
 

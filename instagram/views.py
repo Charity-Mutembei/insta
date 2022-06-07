@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import NewPostForm
+from .forms import NewPostForm, ProfileForm
 from django.shortcuts import render, redirect
 from .models import Post, Stream
 from django.db.models import Q
@@ -37,3 +37,18 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {'form': form})
+def userProfile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.editor = current_user
+            profile.save()
+
+        return redirect('welcome')
+
+    else:
+        form = ProfileForm()
+
+    return render(request, 'profile.html', {'form': form})

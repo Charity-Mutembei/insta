@@ -1,4 +1,4 @@
-from .models import Post
+from .models import Post, Profile
 from django import forms
 from django.forms import ModelForm
 
@@ -11,3 +11,6 @@ class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('post_image', 'post_text', 'tags')
+class ProfileForm(forms.ModelForm):
+    profilePhoto = forms.ImageField(required = True)
+    Bio = forms.CharField(max_length=500)
