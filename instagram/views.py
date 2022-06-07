@@ -24,8 +24,6 @@ def welcome(request):
 
     return render(request, 'landing.html', {"posts": posts})
 
-def index(request):
-    return render(request, 'index.html')
 # @login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user
@@ -35,7 +33,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.editor = current_user
             post.save()
-        return redirect('landing')
+        return redirect('welcome')
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {'form': form})

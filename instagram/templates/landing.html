@@ -10,13 +10,12 @@
           <div class="row">
               <div class="col">
                 <div class="col">
-                    <div class="profiles" style="border: 0.2px solid grey; background-color: white; border-radius: 5px; height: 3.5cm; padding-top: 20px; padding-left: 20px;">
-                        <div class="row" >
+                    <div class="profiles" id="slider-wrap" style="border: 0.2px solid grey; background-color: white; border-radius: 5px; height: 3.5cm; padding-top: 20px; padding-left: 20px; overflow: hidden">
+                        <div class="row" id="slider" style=" will-change: transform;">
                           {% for post in posts %}
 
-                            <div class="col">
-                                <img src="{{post.post_image.url}}" alt="charity" style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; ">
-                                <p>{{post.post_text}}</p>
+                            <div class="col" id="slider-item" style=" overflow: hidden;">
+                                <img src="{{post.post_image.url}}"  id="slider-image" alt="charity"  style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; background-position: center; ">
                             </div>
 
                             {% endfor %}
@@ -107,5 +106,19 @@
       </div>
     </div>
 </div>
+<script>
+  let sliderwrap = document.querySelector('#slider-wrap');
+  let slider = document.querySelector('#slider');
 
+
+  let disableScroll = false;
+  let items = [...document.querySelectorAll('#slider-item')];
+  let images = [...document.querySelectorAll('#slider-image')];
+
+  images.forEach((image,idx )=>{
+    image.style.backgroundImage = '{{post.post_image.url}}${idx+1}'
+  })
+
+
+</script>
 {% endblock %}

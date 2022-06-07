@@ -1,5 +1,8 @@
+{%extends 'base.html'%}
 {% load bootstrap4 %}
 {% load static %}
+{% block content %}
+
 <!DOCTYPE html>
 <html>
 
@@ -9,9 +12,29 @@
 
   <form  action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
+    <div class="form-design" style="margin-left: 30%; height: 3cm; width: 6cm; padding: 2px;">
+      <div class="title" style="padding: 2px;">
+        <h1>New Post</h1>
+      </div>
+      <div class="post-body" style="padding: 2px;">
+        <label for="">Chose image in your computer</label>
+        {{form.post_image}}
+      </div>
+      <div class="post-body-2" style="padding: 2px;">
+        <label for="">write your caption</label>
+        {{form.post_text}}
+      </div>
+      <div class="post-body-3" style="padding: 2px;">
+        <label for="">Add hasgtags</label>
+        {{form.tags}}
+      </div>
+        <input type="submit" class="btn btn-success btn-lg" value="Post" style="padding: 4px; width: 3cm; margin: 4px;">
+    </div>
 
-  {{form}}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
+
+    </div>
+
+
   </form>
 
    {% block scripts %}
@@ -21,3 +44,5 @@
 </body>
 
 </html>
+
+{% endblock %}
