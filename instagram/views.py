@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import NewPostForm, ProfileForm
 from django.shortcuts import render, redirect
-from .models import Post, Stream
+from .models import Post, Stream, Profile
 from django.db.models import Q
 # Create your views here.
 # @login_required(login_url='/login/')
@@ -24,9 +24,11 @@ def welcome(request):
 
     return render(request, 'landing.html', {"posts": posts})
 def userProfile(request):
+    profiles = Profile.objects.all()
+    print('profile', profiles)
 
 
-    return render(request, 'profile.html')
+    return render(request, 'profile.html', {"profiles": profiles})
 # @login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user

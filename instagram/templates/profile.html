@@ -7,7 +7,9 @@
   <div class="row">
     <div class="col">
       <div class="profile-display">
-    <img src="{% static 'pic.jpeg' %}" alt="" style="border-radius: 3cm; width:6cm; height: 6cm;">
+        {% for profile in profiles%}
+    <img src="{{profile.profilePhoto.url}}" alt="" style="border-radius: 3cm; width:6cm; height: 6cm;">
+        {% endfor %}
   </div>
     </div>
     <div class="col">
@@ -15,7 +17,7 @@
         <div class="row">
           <div class="col">
             <div class="username">
-          <h3>Mutembei.Charity</h3>
+          <h3>{{user.username}}</h3>
         </div>
           </div>
           <div class="col">
