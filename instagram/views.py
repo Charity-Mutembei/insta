@@ -17,6 +17,8 @@ from django.db.models import Q
 #     print('post', posts)
 #
 #     return render (request, 'landing.html', {'posts': posts})
+
+
 @login_required(login_url='/login/')
 def welcome(request):
     posts= Post.objects.all()
