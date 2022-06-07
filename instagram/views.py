@@ -24,7 +24,8 @@ def welcome(request):
 
     return render(request, 'landing.html', {"posts": posts})
 
-
+def index(request):
+    return render(request, 'index.html')
 # @login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user

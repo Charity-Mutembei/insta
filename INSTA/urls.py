@@ -24,8 +24,8 @@ from django.contrib.auth import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^app/', include('instagram.urls')),
-    url(r'^', include('registration.backends.simple.urls')),
+    url(r'^', include('instagram.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
 
 

@@ -5,7 +5,7 @@ from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
-    url('^', views.welcome, name = 'welcome'),
+    url('^welcome', views.welcome, name = 'welcome'),
     url(r'^post$', views.new_post, name='new-post'),
 
 ]
