@@ -15,10 +15,18 @@
                           {% for post in posts %}
 
                             <div class="col" id="slider-item" style=" overflow: hidden;">
-                                <img src="{{post.post_image.url}}"  id="slider-image" alt="charity"  style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; background-position: center; ">
+                                <img src="{{post.post_image.url}}"  id="slider-image" alt="charity"  style="width: 1.5cm; height: 1.5cm; border-radius: 6cm; ">
                             </div>
 
                             {% endfor %}
+                        </div>
+                        <div class="slide-control" style="transform: translateY(-50%); display: flex; color: white;" >
+                          <button id="prev-btn" style="cursor: pointer; background: transparent; outline: none;" >
+                            <i class="fa-solid fa-circle-chevron-left"></i>
+                          </button>
+                          <button id="next-btn" style="cursor: pointer; background: transparent; outline: none; " >
+                            <i class="fa-solid fa-circle-chevron-right"></i>
+                          </button>
                         </div>
                     </div>
 
@@ -109,6 +117,7 @@
 <script>
   let sliderwrap = document.querySelector('#slider-wrap');
   let slider = document.querySelector('#slider');
+  
 
 
   let disableScroll = false;
