@@ -14,3 +14,7 @@ class NewPostForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     profilePhoto = forms.ImageField(required = True)
     Bio = forms.CharField(max_length=500)
+
+    class Meta:
+        model = Profile
+        fields = ('profilePhoto', 'Bio')
