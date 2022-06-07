@@ -12,7 +12,7 @@ class tags(models.Model):
         return self.name
 
 class Profile(models.Model):
-    profilePhoto = models.ImageField()
+    profilePhoto = models.ImageField(upload_to='profiles')
     Bio = models.TextField(max_length=500, blank=True)
 
 

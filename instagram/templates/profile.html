@@ -1,1 +1,59 @@
-<h1>Hellow there</h1>
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+<div class="container" style="margin-top: 3%;">
+  <div class="container">
+    <div class="upper">
+  <div class="row">
+    <div class="col">
+      <div class="profile-display">
+    <img src="{% static 'pic.jpeg' %}" alt="" style="border-radius: 3cm; width:6cm; height: 6cm;">
+  </div>
+    </div>
+    <div class="col">
+      <div class="profile-information">
+        <div class="username">
+          <h3>Mutembei.Charity</h3>
+        </div>
+        <div class="icons" style="margin-top: 5%;">
+          <div class="row">
+              <div class="col">
+            <p>posts</p>
+          </div>
+          <div class="col" >
+            <p>followers</p>
+          </div>
+          <div class="col">
+            <p>following</p>
+          </div>
+          </div>
+
+        </div>
+        <div class="bio-area" style="margin-top: 4%;">
+          <div class="name">
+            <strong><p>Mutembei Charity</p></strong>
+          </div>
+          <div class="bio">
+            <p>This is my bio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="post-section">
+  <div class="row">
+    <div class="col">
+      <img src="{% static 'pic.jpeg' %}" alt="" style="width: 9cm; height: 10cm;">
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+{% endblock %}
