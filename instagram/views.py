@@ -17,19 +17,20 @@ from django.db.models import Q
 #     print('post', posts)
 #
 #     return render (request, 'landing.html', {'posts': posts})
-
+@login_required(login_url='/login/')
 def welcome(request):
     posts= Post.objects.all()
     print('post', posts)
 
     return render(request, 'landing.html', {"posts": posts})
+@login_required(login_url='/login/')
 def userProfile(request):
     profiles = Profile.objects.all()
     print('profile', profiles)
 
 
     return render(request, 'profile.html', {"profiles": profiles})
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -42,6 +43,7 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {'form': form})
+@login_required(login_url='/login/')
 def userProfileEdit(request):
     current_user = request.user
     if request.method == 'POST':

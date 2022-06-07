@@ -55,9 +55,11 @@
 
 <div class="post-section">
   <div class="row">
+        {% for post in posts %}
     <div class="col">
-      <img src="{% static 'pic.jpeg' %}" alt="" style="width: 9cm; height: 10cm;">
+      <img src="{{post.post_image.url}}" alt="charity" style="width: 9cm; height: 10cm;">
     </div>
+    {% endfor %}
   </div>
 </div>
 
