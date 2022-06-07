@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
+{% block content %}
+
+<html>
+
+
+
+<body>
+
+  <form  action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div class="form-design" style="margin-left: 30%; height: 3cm; width: 10cm; padding: 2px;">
+      <div class="title" style="padding: 2px;">
+        <h1>Update Profile</h1>
+      </div>
+      <div class="post-body" style="padding: 2px;">
+        <label for="">Chose image in your computer</label>
+        {{form.profilePhoto}}
+      </div>
+      <div class="post-body-2" style="padding: 2px;">
+        <label for="">write your caption</label>
+        {{form.Bio}}
+      </div>
+        <input type="submit" class="btn btn-success btn-lg" value="Post" style="padding: 4px; width: 3cm; margin: 4px;">
+    </div>
+
+
+
+
+
+  </form>
+
+  {% block scripts %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ {% bootstrap_javascript %}
+ {% endblock %}
+
+</body>
+
+</html>
+
+
+
+
+{% endblock%}

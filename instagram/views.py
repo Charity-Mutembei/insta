@@ -23,7 +23,10 @@ def welcome(request):
     print('post', posts)
 
     return render(request, 'landing.html', {"posts": posts})
+def userProfile(request):
 
+
+    return render(request, 'profile.html')
 # @login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user
@@ -37,7 +40,7 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {'form': form})
-def userProfile(request):
+def userProfileEdit(request):
     current_user = request.user
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
@@ -51,4 +54,4 @@ def userProfile(request):
     else:
         form = ProfileForm()
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'profile-edit.html', {'form': form})
