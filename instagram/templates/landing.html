@@ -32,11 +32,12 @@
 
                     <!-- posts -->
 
-                    <div class="stories" style="border: 0.2px solid grey; background-color: white; border-radius: 5px; height: 25.5cm; margin-top: 1cm; padding: 2px;">
+                    <div class="stories" >
                        <div class="row">
 
-                           <div class="col">
-                                 {% for post in posts %}
+                          {% for post in posts %}
+                           <div class="col" style="margin-top: 2%; ">
+
 
                             <div class="card" style="width: 31.65rem;">
                                 <div class="card-body">
@@ -44,18 +45,41 @@
                                 </div>
                                 <img class="card-img-top" src="{{ post.post_image.url }}" alt="Card image cap">
                                 <div class="card-body">
+                                  <div class="row">
+                                    <div class="col">
+                                      <div class="love">
+                                        <svg aria-label="Like" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M16.792 3.904A4.989 4.989 0 0121.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 014.708-5.218 4.21 4.21 0 013.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 013.679-1.938m0-2a6.04 6.04 0 00-4.797 2.127 6.052 6.052 0 00-4.787-2.127A6.985 6.985 0 00.5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 003.518 3.018 2 2 0 002.174 0 45.263 45.263 0 003.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 00-6.708-7.218z"></path></svg>
+                                  </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="message">
+                                    <svg aria-label="Comment" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M20.656 17.008a9.993 9.993 0 10-3.59 3.615L22 22z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+                                  </div>
+                                    </div>
+                                    <div class="col">
+                                      <div class="share">
+                                        <svg aria-label="Share Post" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+                                      </div>
+                                    </div>
+                                  </div>
 
-                                  <p class="card-text">{{tags}}</p>
+                                  {%for tag in tags %}
+
+                                  <p class="card-text">{{tag.}}</p>
+
+                                  {% endfor %}
 
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">{{post_item.post_text}}</li>
-                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">{{post.likes}} likes</li>
+                                    <li class="list-group-item"> <strong>{{user.username}}</strong> {{post.post_text}}</li>
+
                                   </ul>
                               </div>
-                                {% endfor %}
+
 
                            </div>
+                             {% endfor %}
 
                        </div>
 
@@ -117,7 +141,8 @@
 <script>
   let sliderwrap = document.querySelector('#slider-wrap');
   let slider = document.querySelector('#slider');
-  
+  let nextBtn = document.getElementById('next-btn');
+  let prevBtn = document.getElementById('prev-btn');
 
 
   let disableScroll = false;
@@ -127,6 +152,28 @@
   images.forEach((image,idx )=>{
     image.style.backgroundImage = '{{post.post_image.url}}${idx+1}'
   })
+
+  let startSlide = () =>{
+    imageId = setInterval(() => {
+      moveToNextSlide();
+    }, interval);
+  };
+
+  images.forEach((image, idx) =>{
+    addEventListener('transitioned', () => {
+      image.style.transition = 'none';
+      index = 1;
+      slide.style.transform = 'translateX(${-slidewidth * index}px)';
+    }
+  });
+
+  let moveToNextSlide = ()=>{
+    slides = images
+    if (index >= slides,length - 1) return;
+    index++;
+    slide.
+
+  }
 
 
 </script>
