@@ -15,6 +15,12 @@ class Profile(models.Model):
     profilePhoto = models.ImageField(upload_to='profiles')
     Bio = models.TextField(max_length=500, blank=True)
 
+    def __str__(self):
+        return self.Bio
+
+    def save_profile(self):
+        self.save()
+
 
 class Post(models.Model):
     post_text = models.TextField(max_length= 100, blank = True)
