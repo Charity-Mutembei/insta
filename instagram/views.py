@@ -6,6 +6,7 @@ from .forms import NewPostForm, ProfileForm
 from django.shortcuts import render, redirect
 from .models import Post, Stream, Profile
 from django.db.models import Q
+from django.contrib.auth.models import User
 # Create your views here.
 # @login_required(login_url='/login/')
 # def welcome (request):
@@ -25,13 +26,26 @@ def welcome(request):
     print('post', posts)
 
     return render(request, 'landing.html', {"posts": posts})
+
+
 @login_required(login_url='/login/')
-def userProfile(request):
+def userProfile(request, id):
     profiles = Profile.objects.all()
+
+    user = User.objects.get(pk=id)
+    # profiles = Profile.objects.filter(user=id)
     print('profile', profiles)
+    posts = Post.objects.filter(user=id)
 
 
-    return render(request, 'profile.html', {"profiles": profiles})
+    context = {'user': user, 'posts': posts, 'profiles': profiles}
+    # return render(request, 'photoapp/profile.html', context)
+
+    return render(request, 'profile.html', context)
+    # return render(request, 'profile.html', {"profiles": profiles})
+
+
+
 @login_required(login_url='/login/')
 def new_post(request):
     current_user = request.user

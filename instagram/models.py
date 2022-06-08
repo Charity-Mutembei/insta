@@ -5,15 +5,19 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 # Create your models here.
 
-class tags(models.Model):
+class Tags(models.Model):
     name = models.CharField(max_length = 30)
 
     def __str__ (self):
         return self.name
 
+    def save_tags(self):
+        self.save()
+
 class Profile(models.Model):
     profilePhoto = models.ImageField(upload_to='profiles')
     Bio = models.TextField(max_length=500, blank=True)
+    user = models.OneToOneField(User, on_delete= models.CASCADE, null = True)
 
     def __str__(self):
         return self.Bio
@@ -25,7 +29,8 @@ class Profile(models.Model):
 class Post(models.Model):
     post_text = models.TextField(max_length= 100, blank = True)
     post_image = models.ImageField(upload_to = 'posts', blank = False, default='')
-    tags = models.ManyToManyField(tags)
+    tags = models.ManyToManyField(Tags)
+    user = models.ForeignKey(User, on_delete= models.CASCADE, null = True)
 
     def __str__(self):
         return self.post_text
@@ -38,6 +43,13 @@ class Post(models.Model):
 class Follow(models.Model):
     follower = models.ForeignKey(User, on_delete= models.CASCADE, related_name='follower')
     following = models.ForeignKey(User, on_delete= models.CASCADE, related_name='following')
+
+    def __str__(self):
+        return self.follower
+
+    def save_follow(self):
+        self.save()
+
 class Stream (models.Model):
     following = models.ForeignKey(User, on_delete= models.CASCADE, related_name='stream_following')
     user = models.ForeignKey(User, on_delete= models.CASCADE)

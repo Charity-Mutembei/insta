@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Post, Profile, tags, Follow, Stream
+from .models import Post, Profile, Tags, Follow, Stream
 
 #create tests for the model classes
 
@@ -41,3 +41,27 @@ class ProfileTestClass(TestCase):
         self.Bio.save_profile()
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles)>0)
+class TagsTestClass(TestCase):
+    """
+    a test class of the model class tags
+    """
+    #setup method for the class tags
+    def setUp(self):
+        self.name = Tags(name= '')
+
+    #testing whether the instance is properly made
+    def test_instance(self):
+        self.assertTrue(isinstance(self.name, Tags))
+
+    #testing that the save method is proper for this class
+    def test_save_method(self):
+        self.name.save_tags()
+        tags = Tags.objects.all()
+        self.assertTrue(len(tags)>0)
+class FollowTestClass(TestCase):
+    """
+    a test class of the model class tags
+    """
+    #setup method for the class tags
+    def setUp(self):
+        self.follower = Follow (follower= '')
